@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .pao-detalhes
+    h1= pao.nome
+    img(src=pao.imagem, alt=pao.nome).pao-imagem
+    p.descricao-completa= pao.descricao
+    p.preco-grande Preço: R$ #{pao.preco.toFixed(2)}
+    
+    .acoes
+      button.btn-comprar Adicionar ao Carrinho
+      a.btn-voltar(href='/') ← Voltar

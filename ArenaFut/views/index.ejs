@@ -2,26 +2,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Arenas</title>
+<title>Aluguel de Arenas</title>
 <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 
 <body>
 
-<h1>Escolha uma Arena</h1>
+<h1>Escolha uma Arena para Alugar</h1>
+<p class="subtitle">Selecione a arena que você deseja reservar</p>
 
 <div class="container">
 
 <% arenas.forEach(arena => { %>
 
-<a href="/arena/<%= arena.id %>" class="card">
+<a href="/arenas/<%= arena.id %>" class="card">
 
-    <img src="<%= arena.img %>">
+    <img src="<%= arena.img %>" alt="<%= arena.nome %>">
 
     <div class="card-content">
         <h2><%= arena.nome %></h2>
-        <p>Local: <%= arena.local %></p>
-        <p>Capacidade: <%= arena.capacidade %></p>
+        <p><strong>Local:</strong> <%= arena.local %></p>
+        <p><strong>Capacidade:</strong> <%= arena.capacidade %> pessoas</p>
+        <p class="price"><strong>R$ <%= arena.preco.toFixed(2) %> / hora</strong></p>
     </div>
 
 </a>

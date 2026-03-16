@@ -2,4 +2,11 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  
+  .paes-container
+    each pao in paes
+      .pao-card
+        h2= pao.nome
+        p= pao.descricao
+        p.preco R$ #{pao.preco.toFixed(2)}
+        a.btn(href='/paes/' + pao.id) Ver Detalhes

@@ -2,37 +2,79 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Reserva</title>
-<link rel="stylesheet" href="/css/style.css">
+<title>Reserva - <%= arena.nome %></title>
+<link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
 
+<a href="/" class="btn-voltar">← Voltar</a>
+
+<div class="detalhes-container">
+
 <h1>Reservar <%= arena.nome %></h1>
 
-<img src="<%= arena.img %>" style="width:400px">
+<img src="/<%= arena.img %>" alt="<%= arena.nome %>" class="arena-imagem">
 
-<p><strong>Local:</strong> <%= arena.local %></p>
-<p><strong>Capacidade:</strong> <%= arena.capacidade %></p>
+<div class="info-arena">
+    <p><strong>Local:</strong> <%= arena.local %></p>
+    <p><strong>Capacidade:</strong> <%= arena.capacidade %> pessoas</p>
+    <p class="preco-grande"><strong>Preço por hora:</strong> R$ <%= arena.preco.toFixed(2) %></p>
+</div>
 
 <h2>Fazer Reserva</h2>
 
-<form>
+<form class="form-reserva">
 
-<label>Nome</label>
-<input type="text" required>
+    <div class="form-group">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required>
+    </div>
 
-<label>Data</label>
-<input type="date" required>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
 
-<label>Horas</label>
-<input type="number" required>
+    <div class="form-group">
+        <label for="data">Data da Reserva:</label>
+        <input type="date" id="data" name="data" required>
+    </div>
 
-<button type="submit">Reservar Arena</button>
+    <div class="form-group">
+        <label for="horas">Número de Horas:</label>
+        <input type="number" id="horas" name="horas" min="1" max="8" required>
+    </div>
+
+    <div class="form-group">
+        <label for="pessoas">Quantidade de Pessoas:</label>
+        <input type="number" id="pessoas" name="pessoas" min="1" max="<%= arena.capacidade.replace('.', '') %>" required>
+    </div>
+
+    <div class="resumo-preco">
+        <p>Valor estimado: <span id="valor-total">R$ 0,00</span></p>
+    </div>
+
+    <button type="submit" class="btn-reservar">Confirmar Reserva</button>
 
 </form>
 
-<a href="/">Voltar</a>
+</div>
+
+<script>
+    const precoHora = <%= arena.preco %>;
+    const inputHoras = document.getElementById('horas');
+    const valorTotal = document.getElementById('valor-total');
+
+    function atualizarTotal() {
+        const horas = parseInt(inputHoras.value) || 0;
+        const total = precoHora * horas;
+        valorTotal.textContent = 'R$ ' + total.toFixed(2);
+    }
+
+    inputHoras.addEventListener('change', atualizarTotal);
+    inputHoras.addEventListener('input', atualizarTotal);
+</script>
 
 </body>
 </html>

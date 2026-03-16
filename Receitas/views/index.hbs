@@ -3,25 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Receitas</title>
+    <title>Livro de Receitas</title>
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 
 <body>
 
     <h1>Livro de Receitas</h1>
+    <p class="subtitle">Explore nossas deliciosas receitas</p>
 
     <div class="container">
 
         {{#each receitas}}
 
-        <a class="card" href="/receita/{{id}}">
+        <a class="card" href="/receitas/{{id}}">
 
-            <h2>{{nome}}</h2>
+            <div class="card-header">
+                <h2>{{nome}}</h2>
+            </div>
 
-            <p>{{descricao}}</p>
+            <div class="card-body">
+                <p class="descricao">{{descricao}}</p>
+                <p class="tempo">⏱️ {{tempo_preparo}}</p>
+                <p class="dificuldade">📊 {{dificuldade}}</p>
+            </div>
 
-            <button>Ver Receita</button>
+            <div class="card-footer">
+                <button class="btn">Ver Receita</button>
+            </div>
 
         </a>
 

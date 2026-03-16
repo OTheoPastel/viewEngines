@@ -1,1 +1,45 @@
-//exiba as receitas vindas do roteador receitas.js
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{receita.nome}}</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+
+<a href="/" class="btn-voltar">← Voltar</a>
+
+<div class="detalhes-container">
+
+    <h1>{{receita.nome}}</h1>
+
+    <div class="info-receita">
+        <p><strong>⏱️ Tempo de Preparo:</strong> {{receita.tempo_preparo}}</p>
+        <p><strong>📊 Dificuldade:</strong> {{receita.dificuldade}}</p>
+    </div>
+
+    <section class="secao">
+        <h2>Ingredientes</h2>
+        <ul class="lista-ingredientes">
+            {{#each receita.ingredientes}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </section>
+
+    <section class="secao">
+        <h2>Modo de Preparo</h2>
+        <ol class="lista-preparo">
+            {{#each receita.preparo}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ol>
+    </section>
+
+</div>
+
+</body>
+
+</html>

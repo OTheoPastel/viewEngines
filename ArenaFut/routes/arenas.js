@@ -20,8 +20,15 @@ const arenas = [
     }
 ];
 
-router.get("/", (req, res) => {
-    res.render("index", { arenas });
+router.get("/:id", (req, res) => {
+    const id = req.params.id;
+    const arena = arenas.find(a => a.id == id);
+
+    if (!arena) {
+        return res.status(404).render("error", { message: "Arena não encontrada" });
+    }
+
+    res.render("arena", { arena });
 });
 
 module.exports = router;
