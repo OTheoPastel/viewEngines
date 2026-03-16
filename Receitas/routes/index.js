@@ -1,9 +1,26 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express")
+const router = express.Router()
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const receitas = [
+{
+    id:1,
+    nome:"Bolo de Chocolate",
+    descricao:"Um bolo simples e fofinho"
+},
+{
+    id:2,
+    nome:"Panqueca",
+    descricao:"Panquecas rápidas para café da manhã"
+},
+{
+    id:3,
+    nome:"Macarrão Alho e Óleo",
+    descricao:"Receita italiana bem simples"
+}
+]
 
-module.exports = router;
+router.get("/", (req,res)=>{
+    res.render("index",{receitas})
+})
+
+module.exports = router

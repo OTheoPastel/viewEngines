@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reserva</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<h1>Reservar <%= arena.nome %></h1>
+
+<img src="<%= arena.img %>" style="width:400px">
+
+<p><strong>Local:</strong> <%= arena.local %></p>
+<p><strong>Capacidade:</strong> <%= arena.capacidade %></p>
+
+<h2>Fazer Reserva</h2>
+
+<form>
+
+<label>Nome</label>
+<input type="text" required>
+
+<label>Data</label>
+<input type="date" required>
+
+<label>Horas</label>
+<input type="number" required>
+
+<button type="submit">Reservar Arena</button>
+
+</form>
+
+<a href="/">Voltar</a>
+
+</body>
+</html>

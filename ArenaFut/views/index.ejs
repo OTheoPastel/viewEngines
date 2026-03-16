@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<head>
+<meta charset="UTF-8">
+<title>Arenas</title>
+<link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<body>
+
+<h1>Escolha uma Arena</h1>
+
+<div class="container">
+
+<% arenas.forEach(arena => { %>
+
+<a href="/arena/<%= arena.id %>" class="card">
+
+    <img src="<%= arena.img %>">
+
+    <div class="card-content">
+        <h2><%= arena.nome %></h2>
+        <p>Local: <%= arena.local %></p>
+        <p>Capacidade: <%= arena.capacidade %></p>
+    </div>
+
+</a>
+
+<% }) %>
+
+</div>
+
+</body>
 </html>
